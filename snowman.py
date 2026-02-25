@@ -1,9 +1,19 @@
 """
-Snowman Meltdown — a Hangman-style word guessing game.
+Snowman Meltdown -- a Hangman-style word guessing game.
 Guess the word before the snowman melts away completely!
 """
 
+import os
+import sys
 import random
+
+# Force UTF-8 on Windows so emoji render correctly
+if sys.platform == "win32":
+    os.environ.setdefault("PYTHONUTF8", "1")
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stdin, "reconfigure"):
+        sys.stdin.reconfigure(encoding="utf-8", errors="replace")
 
 # ── Snowman ASCII art stages (0 = intact, 6 = melted) ──────────────────────
 SNOWMAN_STAGES = [
